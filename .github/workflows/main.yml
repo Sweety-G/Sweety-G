@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: python3 script/test.py
+        - name: Get repository
+          uses: actions/checkout@v4
