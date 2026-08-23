@@ -44,15 +44,18 @@ software engineering · ai/ml · research
 
 I'm focused on becoming a strong software engineer while building toward AI/ML.
 
-My current direction:
+### WHAT I DO
+
+- 💻 Software Engineering
+- 🤖 Artificial Intelligence & Machine Learning
+- ☁️ Cloud & DevOps
+- 🔬 Research
+- 🚀 Building real-world projects
+- 🧠 Learning by building
+
+---
+
+## CURRENTLY
 
 ```text
-DSA
- ↓
-Software Engineering
- ↓
-Full Stack Development
- ↓
-Cloud & DevOps
- ↓
-AI / ML
+Software Engineering · AI/ML · Research
