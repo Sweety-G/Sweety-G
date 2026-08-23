@@ -1,53 +1,50 @@
-# Hi, I'm Sweety 👋
+<div align="center">
 
-## SWEETY-G
+<img src="./ascii.svg" width="460" alt="Sweety ASCII portrait">
 
-**Software Engineering · AI/ML · Research**
+<br>
 
-I build software, explore AI/ML, and work on research-driven projects.
+<samp> SWEETY-G </samp>
 
----
+<br><br>
 
-## 👩‍💻 ABOUT ME
+<samp>
+software engineering · ai/ml · research
+</samp>
 
-- 💻 Software Engineering
-- 🤖 Artificial Intelligence & Machine Learning
-- ☁️ Cloud & DevOps
-- 🔬 Research
-- 🚀 Building real-world projects
-- 📚 Learning by building
+</div>
 
 ---
 
-## 🚀 PROJECTS
+> Building software, exploring AI/ML, and working on research-driven problems.
 
-### 🔬 Multimodal Fake News Detection
+<br>
 
-Research focused on detecting factual inconsistencies between images and accompanying text.
+<div align="center">
 
-**Focus:**  
-Vision-Language Models · CLIP · Multimodal Learning · Generalization
+<img src="./stats.svg" width="860" alt="GitHub activity">
 
----
+<br><br>
 
-### 🚀 Campus Study Spot Finder
+<img src="./streak.svg" width="860" alt="GitHub streak">
 
-A system for discovering suitable study spaces around a campus.
+<br><br>
 
-**Focus:**  
-Full Stack · Maps · Database · APIs
+<img src="./langs.svg" width="860" alt="Top languages">
 
----
+<br><br>
 
-## 🔬 RESEARCH
+<img src="./year.svg" width="860" alt="Contribution activity">
 
-### Improving Generalization for Multimodal Fake News Detection
-
-Working on image-text factual inconsistency detection, where an image may be genuine while the accompanying claim is misleading or factually incorrect.
+</div>
 
 ---
 
-## 🧠 CURRENTLY LEARNING
+## ABOUT
+
+I'm focused on becoming a strong software engineer while building toward AI/ML.
+
+My current direction:
 
 ```text
 DSA
