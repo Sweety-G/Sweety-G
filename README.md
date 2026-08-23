@@ -4,7 +4,7 @@
 
 <br>
 
-<samp> SWEETY-G </samp>
+<samp>SWEETY-G</samp>
 
 <br><br>
 
