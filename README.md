@@ -37,25 +37,3 @@ software engineering · ai/ml · research
 <img src="./year.svg" width="860" alt="Contribution activity">
 
 </div>
-
----
-
-## ABOUT
-
-I'm focused on becoming a strong software engineer while building toward AI/ML.
-
-### WHAT I DO
-
-- 💻 Software Engineering
-- 🤖 Artificial Intelligence & Machine Learning
-- ☁️ Cloud & DevOps
-- 🔬 Research
-- 🚀 Building real-world projects
-- 🧠 Learning by building
-
----
-
-## CURRENTLY
-
-```text
-Software Engineering · AI/ML · Research
