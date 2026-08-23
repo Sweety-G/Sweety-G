@@ -17,16 +17,21 @@ jobs:
       - name: Get repository
         uses: actions/checkout@v4
 
-      - name: Install requests
+      - name: Install Python requests
         run: python3 -m pip install requests
 
       - name: Generate profile
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/test.py
 
       - name: Save changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add profile.svg
+
           git commit -m "Update profile stats" || echo "No changes to commit"
+
           git push
