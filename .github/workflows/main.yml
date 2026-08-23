@@ -1,10 +1,13 @@
-name: My First Action
+name: Update Profile
 
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  hello:
+  update-profile:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,5 +17,13 @@ jobs:
       - name: Install requests
         run: python3 -m pip install requests
 
-      - name: Run Python
+      - name: Generate profile
         run: python3 scripts/test.py
+
+      - name: Save changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile.svg
+          git commit -m "Update profile stats" || echo "No changes to commit"
+          git push
