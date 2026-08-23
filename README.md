@@ -24,13 +24,7 @@ I build software, explore AI/ML, and work on research-driven projects.
 
 ---
 
-### GITHUB
 
-<p align="center">
-  <img src="./profile.svg" alt="GitHub statistics">
-</p>
-
----
 
 ### PROJECTS
 
