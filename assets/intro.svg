@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="460"
+    height="135"
+    viewBox="0 0 460 135">
+
+    <style>
+        .name {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            fill: #ffffff;
+        }
+
+        .role {
+            font-family: monospace;
+            font-size: 12px;
+            fill: #c9d1d9;
+            letter-spacing: 0.5px;
+        }
+
+        .bio {
+            font-family: monospace;
+            font-size: 11px;
+            fill: #8b949e;
+        }
+    </style>
+
+    <text
+        x="230"
+        y="25"
+        text-anchor="middle"
+        class="name"
+        opacity="0">SWEETY-G
+        <animate
+            attributeName="opacity"
+            from="0"
+            to="1"
+            dur="0.8s"
+            begin="0.2s"
+            fill="freeze"/>
+    </text>
+
+    <text
+        x="230"
+        y="58"
+        text-anchor="middle"
+        class="role"
+        opacity="0">software engineer · AI/ML · research
+        <animate
+            attributeName="opacity"
+            from="0"
+            to="1"
+            dur="0.8s"
+            begin="0.9s"
+            fill="freeze"/>
+        <animate
+            attributeName="y"
+            from="68"
+            to="58"
+            dur="0.7s"
+            begin="0.9s"
+            fill="freeze"/>
+    </text>
+
+    <text
+        x="230"
+        y="91"
+        text-anchor="middle"
+        class="bio"
+        opacity="0">Building software, exploring AI, and solving research-driven problems.
+        <animate
+            attributeName="opacity"
+            from="0"
+            to="1"
+            dur="1s"
+            begin="1.6s"
+            fill="freeze"/>
+        <animate
+            attributeName="y"
+            from="101"
+            to="91"
+            dur="0.7s"
+            begin="1.6s"
+            fill="freeze"/>
+    </text>
+
+</svg>
