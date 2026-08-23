@@ -1,20 +1,72 @@
-# Hi, I'm Sweety 👋
+# Sweety-G
 
 <p align="center">
-  <img src="./profile.svg" alt="GitHub Profile Stats">
+  <img src="./assets/portrait.svg" alt="Sweety-G ASCII portrait">
 </p>
 
 ---
 
-### 🚀 About Me
+## SWEETY-G
 
-- 💻 Software Engineering
-- 🤖 AI / ML
-- ☁️ Cloud & DevOps
-- 📚 Always learning and building
+**Software Engineering · AI/ML · Research**
+
+I build software, explore AI/ML, and work on research-driven projects.
 
 ---
 
-### 📊 GitHub Activity
+### ABOUT
 
-My profile statistics and contribution activity are automatically generated and updated using **Python + GitHub API + GitHub Actions**.
+- Software Engineering
+- Artificial Intelligence & Machine Learning
+- Cloud & DevOps
+- Research
+- Building things and learning by doing
+
+---
+
+### GITHUB
+
+<p align="center">
+  <img src="./profile.svg" alt="GitHub statistics">
+</p>
+
+---
+
+### PROJECTS
+
+#### 🔬 Multimodal Fake News Detection
+
+Research focused on detecting factual inconsistencies between images and accompanying text.
+
+**Focus:** Vision-Language Models · CLIP · Generalization · Multimodal Learning
+
+---
+
+#### 🚀 Campus Study Spot Finder
+
+A system for discovering suitable study spaces around a campus.
+
+**Focus:** Full Stack · Maps · Database · APIs
+
+---
+
+### RESEARCH
+
+**Improving Generalization for Multimodal Fake News Detection**
+
+Working on image-text factual inconsistency detection, where an image may be genuine while the accompanying claim is misleading or factually incorrect.
+
+---
+
+### CURRENTLY LEARNING
+
+```text
+Software Engineering
+       ↓
+DSA
+       ↓
+Full Stack Development
+       ↓
+Cloud & DevOps
+       ↓
+AI / ML
