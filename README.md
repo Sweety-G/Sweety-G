@@ -2,18 +2,20 @@
 
 <img src="./assets/portrait.svg" width="460" alt="Sweety ASCII portrait">
 
-<br><br>
+<br>
 
-<samp>SWEETY-G</samp>
+<samp><strong>SWEETY-G</strong></samp>
 
 <br><br>
 
 <samp>
-software engineering · ai/ml · research
+software engineer · AI/ML · research
 </samp>
 
 <br><br>
 
-> Building software, exploring AI/ML, and working on research-driven problems.
+<samp>
+Building software, exploring AI, and solving research-driven problems.
+</samp>
 
 </div>
