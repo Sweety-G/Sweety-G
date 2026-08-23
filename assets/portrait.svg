@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="720"
-    height="540"
-    viewBox="0 0 720 540">
+    <defs>
+    <style>
+        .portrait {
+            animation: reveal 2.8s ease-out forwards;
+            transform-origin: center;
+        }
 
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+                clip-path: inset(100% 0 0 0);
+                transform: translateY(18px);
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                clip-path: inset(0 0 0 0);
+                transform: translateY(0);
+            }
+        }
+    </style>
+</defs>
     <rect
         width="100%"
         height="100%"
         fill="#0d1117"/>
 
     <g
-        fill="#ffffff"
-        font-family="monospace"
-        font-size="12px"
-        xml:space="preserve">
-
+        <g
+    class="portrait"
+    fill="#ffffff"
+    font-family="monospace"
+    font-size="12px"
+    xml:space="preserve">
         <text x="0" y="12">::::..............=*###%%###%##**+--:::................:-+%%%###*=........................</text>
 <text x="0" y="24">...::............:*####%%#%%%###*+=-::::....   ........:-=#%%####*-.......................</text>
 <text x="0" y="36">.................=####%%##%@%#%#*+=--::::.... .........:--#%%#####+:......................</text>
