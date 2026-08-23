@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./ascii.svg" width="460" alt="Sweety ASCII portrait">
+<img src="./assets/portrait.svg" width="460" alt="Sweety ASCII portrait">
 
 <br>
 
