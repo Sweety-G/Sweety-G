@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+width="860"
+height="180"
+viewBox="0 0 860 180">
+
+<rect
+width="860"
+height="180"
+rx="14"
+fill="#0d1117"
+stroke="#30363d"/>
+
+<text
+x="40"
+y="55"
+fill="#8b949e"
+font-family="monospace"
+font-size="15">
+STREAK
+</text>
+
+<text
+x="40"
+y="105"
+fill="#ffffff"
+font-family="monospace"
+font-size="38"
+font-weight="bold">
+1
+</text>
+
+<text
+x="40"
+y="140"
+fill="#8b949e"
+font-family="monospace"
+font-size="14">
+current streak · longest: 2
+</text>
+
+</svg>
