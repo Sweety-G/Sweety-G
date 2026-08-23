@@ -17,8 +17,12 @@ jobs:
       - name: Get repository
         uses: actions/checkout@v4
 
-      - name: Install Python requests
-        run: python3 -m pip install requests
+      - name: Install Python packages
+        run: |
+          python3 -m pip install requests Pillow
+
+      - name: Generate portrait
+        run: python3 scripts/generate_portrait.py
 
       - name: Generate profile
         env:
@@ -30,8 +34,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add profile.svg
+          git add assets/portrait.svg profile.svg
 
-          git commit -m "Update profile stats" || echo "No changes to commit"
+          git commit -m "Update generated profile" || echo "No changes to commit"
 
           git push
