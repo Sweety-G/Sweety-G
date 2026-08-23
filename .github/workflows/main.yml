@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Say hello
-        run: python3 -c "print('Hello from Python!')"
+        run: python3 scripts/test.py
