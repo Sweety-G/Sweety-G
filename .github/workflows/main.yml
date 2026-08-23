@@ -1,41 +1,40 @@
 name: Update Profile
 
 on:
-  workflow_dispatch:
-
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "17 5 * * *"
+
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-profile:
+  refresh:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get repository
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install Python packages
-        run: |
-          python3 -m pip install requests Pillow
-
-      - name: Generate portrait
-        run: python3 scripts/generate_portrait.py
 
       - name: Generate profile
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/test.py
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_LOGIN: ${{ github.repository_owner }}
+        run: python3 scripts/generate_profile.py
 
-      - name: Save changes
+      - name: Commit generated files
         run: |
+          FILES="stats.svg streak.svg langs.svg year.svg"
+
+          if [ -z "$(git status --porcelain -- $FILES)" ]; then
+            echo "No changes."
+            exit 0
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add assets/portrait.svg profile.svg
-
-          git commit -m "Update generated profile" || echo "No changes to commit"
-
+          git add -- $FILES
+          git commit -m "stats: refresh"
           git push
