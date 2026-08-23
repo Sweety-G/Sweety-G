@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Say hello
-        run: python3 scripts/test.py
+        run: python3 script/test.py
