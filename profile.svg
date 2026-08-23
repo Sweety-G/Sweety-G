@@ -1,16 +1,24 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="150">
-    <rect width="500" height="150" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="260">
+    <rect width="600" height="260" rx="15" fill="white"/>
 
-    <text x="30" y="45" font-size="28">
+    <text x="40" y="55" font-size="32" font-family="Arial">
         Sweety-G
     </text>
 
-    <text x="30" y="85" font-size="20">
+    <text x="40" y="105" font-size="22" font-family="Arial">
         Repositories: 6
     </text>
 
-    <text x="30" y="120" font-size="20">
+    <text x="40" y="145" font-size="22" font-family="Arial">
         Followers: 2
+    </text>
+
+    <text x="40" y="185" font-size="22" font-family="Arial">
+        Following: 2
+    </text>
+
+    <text x="40" y="225" font-size="22" font-family="Arial">
+        Stars: 2
     </text>
 </svg>
