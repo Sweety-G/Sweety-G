@@ -1,40 +1,35 @@
 name: Update Profile
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: "17 5 * * *"
-
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  refresh:
+  update-profile:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate profile
+      - name: Generate statistics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_LOGIN: ${{ github.repository_owner }}
-        run: python3 scripts/generate_profile.py
+        run: python3 scripts/generate_stats.py
 
-      - name: Commit generated files
+      - name: Commit generated SVGs
         run: |
-          FILES="stats.svg streak.svg langs.svg year.svg"
-
-          if [ -z "$(git status --porcelain -- $FILES)" ]; then
-            echo "No changes."
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -- $FILES
-          git commit -m "stats: refresh"
+          git add stats.svg streak.svg langs.svg year.svg
+
+          git commit -m "stats: refresh" || echo "No changes to commit"
+
           git push
