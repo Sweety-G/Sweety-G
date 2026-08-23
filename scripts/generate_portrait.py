@@ -1,122 +1,205 @@
-from PIL import Image, ImageOps, ImageEnhance
-
-INPUT_IMAGE = "assets/portrait.jpg"
-OUTPUT_IMAGE = "assets/portrait.svg"
-
-# ASCII characters from dark to bright
-ASCII_CHARS = "@%#*+=-:. "
+import os
+import urllib.request
+import json
+from datetime import datetime, timedelta
 
 
-def image_to_ascii(image, width=90):
-    # Keep the original aspect ratio.
-    # Characters are taller than they are wide,
-    # so we compensate for that here.
-    aspect_ratio = image.height / image.width
-    height = int(width * aspect_ratio * 0.5)
-
-    image = image.resize((width, height))
-
-    # Convert to grayscale
-    image = ImageOps.grayscale(image)
-
-    # Improve contrast
-    image = ImageEnhance.Contrast(image).enhance(1.5)
-
-    pixels = list(image.getdata())
-
-    ascii_image = []
-
-    for y in range(height):
-        row = ""
-
-        for x in range(width):
-            brightness = pixels[y * width + x]
-
-            index = int(
-                brightness / 255 * (len(ASCII_CHARS) - 1)
-            )
-
-            row += ASCII_CHARS[index]
-
-        ascii_image.append(row)
-
-    return ascii_image
+USERNAME = os.environ.get("GH_LOGIN", "Sweety-G")
+TOKEN = os.environ.get("GITHUB_TOKEN")
 
 
-def create_svg(ascii_art):
-    width = len(ascii_art[0])
-    height = len(ascii_art)
+def github_graphql(query, variables):
+    data = json.dumps({
+        "query": query,
+        "variables": variables
+    }).encode("utf-8")
 
-    char_width = 8
-    char_height = 12
+    request = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=data,
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json"
+        }
+    )
 
-    svg_width = width * char_width
-    svg_height = height * char_height
+    with urllib.request.urlopen(request) as response:
+        return json.loads(response.read().decode("utf-8"))
 
-    text_lines = []
 
-    for row_number, row in enumerate(ascii_art):
-        escaped_row = (
-            row.replace("&", "&amp;")
-               .replace("<", "&lt;")
-               .replace(">", "&gt;")
-        )
+def get_contributions():
+    today = datetime.utcnow().date()
 
-        y = (row_number + 1) * char_height
+    start = today - timedelta(days=364)
 
-        text_lines.append(
-            f'<text x="0" y="{y}">{escaped_row}</text>'
-        )
+    from_date = f"{start}T00:00:00Z"
+    to_date = f"{today}T23:59:59Z"
 
-    text_content = "\n".join(text_lines)
+    query = """
+    query($login: String!, $from: DateTime!, $to: DateTime!) {
+      user(login: $login) {
+        contributionsCollection(
+          from: $from
+          to: $to
+        ) {
+          totalCommitContributions
+          totalPullRequestContributions
+          totalIssueContributions
+          totalPullRequestReviewContributions
 
-    svg = f"""<?xml version="1.0" encoding="UTF-8"?>
+          contributionCalendar {
+            totalContributions
 
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="{svg_width}"
-    height="{svg_height}"
-    viewBox="0 0 {svg_width} {svg_height}">
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+              }
+            }
+          }
+        }
+      }
+    }
+    """
 
-    <rect
-        width="100%"
-        height="100%"
-        fill="#0d1117"/>
+    result = github_graphql(
+        query,
+        {
+            "login": USERNAME,
+            "from": from_date,
+            "to": to_date
+        }
+    )
 
-    <g
-        fill="#ffffff"
-        font-family="monospace"
-        font-size="{char_height}px"
-        xml:space="preserve">
+    return result["data"]["user"]["contributionsCollection"]
 
-        {text_content}
 
-    </g>
+def flatten_days(calendar):
+    days = []
 
-</svg>
-"""
+    for week in calendar["weeks"]:
+        for day in week["contributionDays"]:
+            days.append(day)
 
-    return svg
+    return days
+
+
+def calculate_streak(days):
+    counts = {
+        day["date"]: day["contributionCount"]
+        for day in days
+    }
+
+    dates = sorted(counts.keys(), reverse=True)
+
+    current = 0
+
+    for date in dates:
+        if counts[date] > 0:
+            current += 1
+        else:
+            break
+
+    longest = 0
+    running = 0
+
+    for date in sorted(counts.keys()):
+        if counts[date] > 0:
+            running += 1
+            longest = max(longest, running)
+        else:
+            running = 0
+
+    return current, longest
+
+
+def write_svg(filename, title, value, subtitle):
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg"
+width="860"
+height="180"
+viewBox="0 0 860 180">
+
+<rect
+width="860"
+height="180"
+rx="14"
+fill="#0d1117"
+stroke="#30363d"/>
+
+<text
+x="40"
+y="55"
+fill="#8b949e"
+font-family="monospace"
+font-size="15">
+{title}
+</text>
+
+<text
+x="40"
+y="105"
+fill="#ffffff"
+font-family="monospace"
+font-size="38"
+font-weight="bold">
+{value}
+</text>
+
+<text
+x="40"
+y="140"
+fill="#8b949e"
+font-family="monospace"
+font-size="14">
+{subtitle}
+</text>
+
+</svg>"""
+
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(svg)
 
 
 def main():
-    print("Loading image...")
+    contributions = get_contributions()
 
-    image = Image.open(INPUT_IMAGE)
+    calendar = contributions["contributionCalendar"]
 
-    print("Creating ASCII portrait...")
+    total = calendar["totalContributions"]
 
-    ascii_art = image_to_ascii(image)
+    days = flatten_days(calendar)
 
-    print("Creating SVG...")
+    current, longest = calculate_streak(days)
 
-    svg = create_svg(ascii_art)
+    write_svg(
+        "stats.svg",
+        "GITHUB ACTIVITY",
+        str(total),
+        "contributions in the last year"
+    )
 
-    with open(OUTPUT_IMAGE, "w", encoding="utf-8") as file:
-        file.write(svg)
+    write_svg(
+        "streak.svg",
+        "STREAK",
+        str(current),
+        f"current streak · longest: {longest}"
+    )
 
-    print("Portrait created!")
-    print(f"Saved to: {OUTPUT_IMAGE}")
+    write_svg(
+        "langs.svg",
+        "LANGUAGES",
+        "software",
+        "AI / ML · full stack · cloud · research"
+    )
+
+    write_svg(
+        "year.svg",
+        "YEAR",
+        str(total),
+        "contribution activity"
+    )
+
+    print("Profile graphics generated successfully.")
 
 
 if __name__ == "__main__":
