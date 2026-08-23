@@ -38,12 +38,13 @@
         height="100%"
         fill="#0d1117"/>
 
-    <g
-        class="portrait"
-        fill="#ffffff"
-        font-family="monospace"
-        font-size="12px"
-        xml:space="preserve">
+   <g
+    class="portrait"
+    transform="translate(35 0)"
+    fill="#ffffff"
+    font-family="monospace"
+    font-size="12px"
+    xml:space="preserve">
 
         <text x="0" y="12">::::..............=*###%%###%##**+--:::................:-+%%%###*=........................</text>
         <text x="0" y="24">...::............:*####%%#%%%###*+=-::::....   ........:-=#%%####*-.......................</text>
